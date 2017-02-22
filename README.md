@@ -7,8 +7,7 @@ A: At first, we should search each unit in unitlist. Secondly, we can count how 
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: We just need to add two diagonal units to our program and add them to unitlist.
-
+A: At first, we should create two diagonal units. Secondly, we can add them to unitlist. At last, since unitlist already contains two diagonal units, the constraints(eliminate,only_choice,naked_twins) will be applied to diagonal too.
 ### Install
 
 This project requires **Python 3**.

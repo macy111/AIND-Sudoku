@@ -76,6 +76,11 @@ def display(values):
     print
 
 def eliminate(values):
+    """
+    Eliminate values from peers of each box with a single value.
+    Args:
+        values(dict): The sudoku in dictionary form
+    """
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     for box in solved_values:
         digit = values[box]
@@ -85,6 +90,13 @@ def eliminate(values):
     return values
 
 def only_choice(values):
+    """
+    Finalize all values that are the only choice for a unit.
+    Go through all the units, and whenever there is a unit with a value 
+    that only fits in one box, assign the value to this box.
+    Args:
+        values(dict): The sudoku in dictionary form    
+    """
     for unit in unitlist:
         for digit in '123456789':
             dplaces = [box for box in unit if digit in values[box]]
@@ -94,6 +106,12 @@ def only_choice(values):
     return values
 
 def reduce_puzzle(values):
+    """
+    Combine the functions eliminate, only_choice and naked_twins 
+    to reduce puzzle with Constraint Propagation.
+    Args:
+        values(dict): The sudoku in dictionary form 
+    """
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     stalled = False
     while not stalled:
